@@ -13,11 +13,16 @@ import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import org.apache.commons.cli.*;
 import org.apache.commons.io.FilenameUtils;
+import org.springframework.beans.BeanUtils;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.util.StringUtils;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -140,7 +145,7 @@ public class JunitResultAggregatorApplication {
         //Create an Object to store the deserialized xml file
         Testsuites xmldata=null;
         float duration=0.0f;
-        String buildName="";
+        String buildName="BrowserStack Sample Build";
         ArrayList<Testsuite> testSuites=new ArrayList<>();
 
         //Deserialize all files in the directory & aggregate them to Testsuite array list
@@ -148,10 +153,13 @@ public class JunitResultAggregatorApplication {
             XmlUtils utils = new XmlUtils();
             xmldata = utils.deserializeXml(file);
             duration+=Float.valueOf(xmldata.getTime());
-            if(buildName.isEmpty()) {
-                buildName = xmldata.getName();
-            }
+            buildName = xmldata.getName();
             for (Testsuite suite : xmldata.getTestsuite()) {
+                if(StringUtils.isEmpty(suite.getTimestamp()))
+                {
+                    suite.setTimestamp(new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").format(new java.util.Date()));
+                    //suite.setTimestamp(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssZ").format(new java.util.Date()));
+                }
                 testSuites.add(suite);
             }
 
@@ -166,10 +174,27 @@ public class JunitResultAggregatorApplication {
         int numTests=0, failures=0,errors=0;
         float time=0.0f;
         for (Testsuite suite: sortedTestsuitesList) {
-            numTests+=Integer.valueOf(suite.getTests());
-            failures+=Integer.valueOf(suite.getFailures());
-            errors+=Integer.valueOf(suite.getErrors());
-            time+=Float.valueOf(suite.getTime());
+            if(!StringUtils.isEmpty(suite.getTests()))
+            {
+                numTests+=Integer.valueOf(suite.getTests()) ;
+            }else {
+                numTests+=0;
+            }
+            if(!StringUtils.isEmpty(suite.getFailures())) {
+                failures += Integer.valueOf(suite.getFailures());
+            }else {
+                failures+=0;
+            }
+            if(!StringUtils.isEmpty(suite.getErrors())) {
+                errors += Integer.valueOf(suite.getErrors());
+            }else {
+                errors+=0;
+            }
+            if(!StringUtils.isEmpty(suite.getTime())) {
+                time += Float.valueOf(suite.getTime());
+            }else {
+                time+=0;
+            }
         }
 
 

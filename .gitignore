@@ -2,3 +2,6 @@
 .idea/
 logs/
 target/
+.DS_Store
+**/.DS_Store
+src/main/java/com/browserstack/.DS_Store
