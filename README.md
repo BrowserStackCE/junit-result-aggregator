@@ -7,6 +7,7 @@ Observability
 
 - Download the junitupload directory to your local machine
 - Set Environment variables BROWSERSTACK_USERNAME and BROWSERSTACK_ACCESS_KEY
+- Get the path of the directory which has all the junit files
 - Run the junit upload command with required parameters
     ```sh
       junitupload.exe ^
