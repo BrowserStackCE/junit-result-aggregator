@@ -12,8 +12,9 @@
     </parent>
 
     <groupId>com.browserstack</groupId>
-    <artifactId>junit-result0aggregator</artifactId>
+    <artifactId>junit-result-aggregator</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
     <description>Aggregate results from multiple junit files and create one single report</description>
 
     <properties>
