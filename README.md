@@ -10,7 +10,7 @@ Observability
 - Run the junit upload command with required parameters
     ```sh
       junitupload.exe ^
-      -p "Coursera" -b "Junit Upload" -i 18 -t "windows" ^
+      -p "Your Project Name" -b "Your Build Name" -i buildnum -t "windows" ^
       -f "jest, 27.9.0" -c "http://localhost:8080" ^
       -d "<Path to the Input Directory without the angled brackets>" ^
       -o "<Path to the Output Directory without the angled brackets>"
