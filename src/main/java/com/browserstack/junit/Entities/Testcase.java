@@ -60,7 +60,7 @@ import jakarta.xml.bind.annotation.XmlType;
 public class Testcase {
 
     protected Skipped skipped;
-    protected List<java.lang.Error> error;
+    protected List<Error> error;
     protected List<Failure> failure;
     @XmlElement(name = "system-out")
     protected List<String> systemOut;
@@ -128,9 +128,9 @@ public class Testcase {
      * 
      * 
      */
-    public List<java.lang.Error> getError() {
+    public List<Error> getError() {
         if (error == null) {
-            error = new ArrayList<java.lang.Error>();
+            error = new ArrayList<Error>();
         }
         return this.error;
     }
@@ -162,6 +162,14 @@ public class Testcase {
             failure = new ArrayList<Failure>();
         }
         return this.failure;
+    }
+
+    public void setError(List<Error> error) {
+        this.error = error;
+    }
+
+    public void setFailure(List<Failure> failure) {
+        this.failure = failure;
     }
 
     /**
