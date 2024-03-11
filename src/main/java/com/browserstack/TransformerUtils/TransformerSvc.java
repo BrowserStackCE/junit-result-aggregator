@@ -1,7 +1,6 @@
 package com.browserstack.TransformerUtils;
 
 import com.browserstack.jest.Entities.JestJson;
-import com.browserstack.junit.Entities.Testsuite;
 import com.browserstack.junit.Entities.Testsuites;
 import com.browserstack.junit.Utils.CommandLineOptions;
 import com.browserstack.junit.Utils.JsonUtils;
@@ -118,11 +117,6 @@ public class TransformerSvc implements CommandLineRunner {
         Testsuites suites = transformerService.jsontoJunit(results);
         System.out.println("Conversion completed");
 
-        System.out.println("Suites Name => " + suites.getName());
-        for (Testsuite suite : suites.getTestsuite()
-        ) {
-            System.out.println("Suite Name => " + suite.getName());
-        }
 
         //String outdir="/Users/venkatesh/Projects/Debugging/Coursera/workingdir";
 
@@ -137,11 +131,6 @@ public class TransformerSvc implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        System.out.println("args");
-        for (String item :
-                args) {
-            System.out.println(item);
-        }
         transform(args);
     }
 }
