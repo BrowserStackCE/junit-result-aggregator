@@ -53,8 +53,8 @@ public abstract class JsontoJunitMapper {
         ZoneId zone = ZoneId.of("GMT");
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-'T'HH:mm:ss");
         sdf.setTimeZone(TimeZone.getTimeZone(zone));
-        //suite.setTimestamp(sdf.format(new Date(Double.valueOf(jestSuite.getPerfStats().getStart()).longValue())));
-        suite.setTimestamp(sdf.format(new Date(Double.valueOf(System.currentTimeMillis()).longValue())));
+        suite.setTimestamp(sdf.format(new Date(Double.valueOf(jestSuite.getPerfStats().getStart()).longValue())));
+        //suite.setTimestamp(sdf.format(new Date(Double.valueOf(System.currentTimeMillis()).longValue())));
         return suite;
     }
 
