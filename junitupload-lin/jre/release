@@ -1,0 +1,2 @@
+JAVA_VERSION="17.0.10"
+MODULES="java.base java.datatransfer java.xml java.prefs java.desktop java.logging java.security.sasl java.naming java.net.http java.security.jgss java.transaction.xa java.sql java.xml.crypto jdk.crypto.ec jdk.crypto.cryptoki jdk.net jdk.security.auth jdk.security.jgss"
