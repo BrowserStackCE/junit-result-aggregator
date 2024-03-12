@@ -126,6 +126,10 @@ public class Testsuite {
         this.properties = value;
     }
 
+    public void setTestcase(List<Testcase> testcase) {
+        this.testcase = testcase;
+    }
+
     /**
      * Gets the value of the testcase property.
      * 
